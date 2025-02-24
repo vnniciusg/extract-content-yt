@@ -102,7 +102,7 @@ class LangChainAnalyzer(ContentAnalyzer):
 
             return chain.invoke(docs)
         except Exception as e:
-            return AnalysisError(f"Failed to analyze content: {str(e)}")
+            raise AnalysisError(f"Failed to analyze content: {str(e)}")
 
 
 class ContentExtractor:
@@ -144,7 +144,7 @@ class ContentExtractor:
         }
 
         if config_path and config_path.exists():
-            with open(config_path, "w") as file:
+            with open(config_path, "r") as file:
                 config_data = yaml.safe_load(file)
 
             default_config.update(config_data)
