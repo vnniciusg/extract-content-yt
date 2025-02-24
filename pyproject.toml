@@ -9,4 +9,6 @@ dependencies = [
     "langchain>=0.3.19",
     "ollama>=0.4.7",
     "youtube-transcript-api>=0.6.3",
+    "transformers>=4.49.0",
+    "langchain-ollama>=0.2.3",
 ]

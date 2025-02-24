@@ -10,7 +10,7 @@ import yaml
 from abc import ABC, abstractmethod
 
 from youtube_transcript_api import YouTubeTranscriptApi
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 from langchain.docstore.document import Document
@@ -74,7 +74,7 @@ class LangChainAnalyzer(ContentAnalyzer):
 
     def __init__(self, config: ExtractorConfig):
         self.config = config
-        self.llm = Ollama(model=config.model_name)
+        self.llm = OllamaLLM(model=config.model_name)
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=config.chunk_size,
             chunk_overlap=config.chunk_overlap,
