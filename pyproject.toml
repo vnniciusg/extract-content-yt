@@ -1,0 +1,12 @@
+[project]
+name = "extract-content-yt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-community>=0.3.18",
+    "langchain>=0.3.19",
+    "ollama>=0.4.7",
+    "youtube-transcript-api>=0.6.3",
+]
