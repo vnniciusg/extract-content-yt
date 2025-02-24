@@ -14,6 +14,7 @@ from langchain_ollama import OllamaLLM
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 from langchain.docstore.document import Document
+from langchain.prompts import PromptTemplate
 
 
 @dataclass
@@ -92,7 +93,10 @@ class LangChainAnalyzer(ContentAnalyzer):
                     self.llm, chain_type="map_reduce", verbose=True
                 )
             else:
-                prompt_template = self.config.prompt_templates[analysis_type.value]
+                template_str = self.config.prompt_templates[analysis_type.value]
+                prompt_template = PromptTemplate(
+                    template=template_str, input_variables=["text"]
+                )
                 chain = load_summarize_chain(
                     self.llm,
                     chain_type="stuff",
